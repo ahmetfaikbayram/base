@@ -1,0 +1,92 @@
+[
+  {
+    "Name": "Product 1",
+    "Price": 200,
+    "BrandId": 1
+  },
+  {
+    "Name": "Product 2",
+    "Price": 150,
+    "BrandId": 1
+  },
+  {
+    "Name": "Product 3",
+    "Price": 180,
+    "BrandId": 2
+  },
+  {
+    "Name": "Product 4",
+    "Price": 300,
+    "BrandId": 2
+  },
+  {
+    "Name": "Product 5",
+    "Price": 250,
+    "BrandId": 4
+  },
+  {
+    "Name": "Product 6",
+    "Price": 120,
+    "BrandId": 5
+  },
+  {
+    "Name": "Product 7",
+    "Price": 10,
+    "BrandId": 2
+  },
+  {
+    "Name": "Product 8",
+    "Price": 8,
+    "BrandId": 4
+  },
+  {
+    "Name": "Product 9",
+    "Price": 15,
+    "BrandId": 4
+  },
+  {
+    "Name": "Product 10",
+    "Price": 18,
+    "BrandId": 3
+  },
+  {
+    "Name": "Product 11",
+    "Price": 15,
+    "BrandId": 3
+  },
+  {
+    "Name": "Product 12",
+    "Price": 16,
+    "BrandId": 4
+  },
+  {
+    "Name": "Product 13",
+    "Price": 14,
+    "BrandId": 4
+  },
+  {
+    "Name": "Product 14",
+    "Price": 250,
+    "BrandId": 6
+  },
+  {
+    "Name": "Product 15",
+    "Price": 189.99,
+    "BrandId": 2
+  },
+  {
+    "Name": "Product 16",
+    "Price": 199.99,
+    "BrandId": 2
+  },
+  {
+    "Name": "Product 17",
+    "Price": 150,
+    "BrandId": 1
+  },
+  {
+    "Name": "Product 18",
+    "Price": 180,
+    "BrandId": 1
+  }
+]
