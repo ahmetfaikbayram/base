@@ -13,16 +13,16 @@ namespace API.Controllers
     [Route("api/products")]
     public class ProductController : ControllerBase
     {
-        private readonly IProductRepository _repo;
-        public ProductController(IProductRepository repo)
+        private readonly IUnitOfWork _unitOfWork;
+        public ProductController(IUnitOfWork unitOfWork)
         {
-            _repo = repo;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProductList()
         {
-            var products = await _repo.GetProductList();
+            var products = await _unitOfWork.Repository<Product>().GetList();
 
             return Ok(products);
         }
@@ -30,7 +30,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            return await _repo.GetProduct(id);
+            return await _unitOfWork.Repository<Product>().GetById(id);
         }
     }
 }

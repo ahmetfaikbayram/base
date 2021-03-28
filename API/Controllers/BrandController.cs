@@ -13,16 +13,16 @@ namespace API.Controllers
     [Route("api/brands")]
     public class BrandController : ControllerBase
     {
-        private readonly IBrandRepository _repo;
-        public BrandController(IBrandRepository repo)
+        private readonly IUnitOfWork _unitOfWork;
+        public BrandController(IUnitOfWork unitOfWork)
         {
-            _repo = repo;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Brand>>> GetBrandList()
         {
-            var brands = await _repo.GetBrandList();
+            var brands = await _unitOfWork.Repository<Brand>().GetList();
 
             return Ok(brands);
         }
@@ -30,7 +30,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Brand>> GetBrand(int id)
         {
-            return await _repo.GetBrand(id);
+            return await _unitOfWork.Repository<Brand>().GetById(id);
         }
     }
 }

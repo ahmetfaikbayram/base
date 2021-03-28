@@ -30,8 +30,8 @@ namespace API
 
             services.AddDbContext<BaseContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IBrandRepository, BrandRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
