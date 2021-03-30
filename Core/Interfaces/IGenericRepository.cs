@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Specifications;
 
 namespace Core.Interfaces
 {
@@ -11,6 +12,8 @@ namespace Core.Interfaces
     {
         Task<T> GetById(int id);
         Task<IReadOnlyList<T>> GetList();
+        Task<T> GetByIdWithSpec(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> GetListWithSpec(ISpecification<T> spec);
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
