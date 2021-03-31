@@ -7,6 +7,7 @@ namespace Core.Specifications
 {
     public class ProductsWithBrandSpecification : BaseSpecification<Product>
     {
+        // ThenInclude sample => AddInclude(“Brand.Country”);
         public ProductsWithBrandSpecification()
         {
             AddInclude(x => x.Brand);
