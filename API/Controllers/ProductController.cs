@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Dtos;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
@@ -15,27 +17,31 @@ namespace API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
-        public ProductController(IUnitOfWork unitOfWork)
+        private readonly IMapper _mapper;
+        public ProductController(IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _mapper = mapper;
             _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProductList()
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProductList()
         {
             var spec = new ProductsWithBrandSpecification();
 
             var products = await _unitOfWork.Repository<Product>().GetListWithSpec(spec);
 
-            return Ok(products);
+            return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductDto>> GetProduct(int id)
         {
             var spec = new ProductsWithBrandSpecification(id);
 
-            return await _unitOfWork.Repository<Product>().GetByIdWithSpec(spec);
+            var product = await _unitOfWork.Repository<Product>().GetByIdWithSpec(spec);
+
+            return _mapper.Map<Product, ProductDto>(product);
         }
     }
 }

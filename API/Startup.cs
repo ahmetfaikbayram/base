@@ -1,3 +1,4 @@
+using API.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
@@ -28,8 +29,9 @@ namespace API
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
 
-            services.AddDbContext<BaseContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+            services.AddAutoMapper(typeof(MappingProfiles));
 
+            services.AddDbContext<BaseContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
         }
@@ -47,6 +49,7 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
