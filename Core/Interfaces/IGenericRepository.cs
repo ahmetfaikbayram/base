@@ -14,6 +14,7 @@ namespace Core.Interfaces
         Task<IReadOnlyList<T>> GetList();
         Task<T> GetByIdWithSpec(ISpecification<T> spec);
         Task<IReadOnlyList<T>> GetListWithSpec(ISpecification<T> spec);
+        Task<int> Count(ISpecification<T> spec);
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
