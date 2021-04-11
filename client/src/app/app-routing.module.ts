@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'product', loadChildren: () => import('./product/product.module').then(mod => mod.ProductModule) },
-  { path: '**', redirectTo: '', pathMatch: 'full' }
+  { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 
 @NgModule({

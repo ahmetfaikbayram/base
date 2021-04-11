@@ -10,7 +10,7 @@ import { ProductParams } from '../shared/models/productParams';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  @ViewChild('search', { static: true }) searchTerm: ElementRef;
+  @ViewChild('search', { static: false }) searchTerm: ElementRef;
   products: IProduct[];
   brands: IBrand[];
   productParams = new ProductParams();
