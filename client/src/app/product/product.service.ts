@@ -5,12 +5,13 @@ import { IPagination } from '../shared/models/pagination';
 import { map } from 'rxjs/operators';
 import { ProductParams } from '../shared/models/productParams';
 import { IProduct } from '../shared/models/product';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
