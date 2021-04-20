@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Core.Business;
 using Core.Entities;
-using Core.Interfaces;
-using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -13,16 +10,16 @@ namespace API.Controllers
     [Route("api/brands")]
     public class BrandController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
-        public BrandController(IUnitOfWork unitOfWork)
+        private readonly IBrandService _brandService;
+        public BrandController(IBrandService brandService)
         {
-            _unitOfWork = unitOfWork;
+            _brandService = brandService;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<Brand>>> GetBrandList()
         {
-            var brands = await _unitOfWork.Repository<Brand>().GetList();
+            var brands = await _brandService.GetBrandList();
 
             return Ok(brands);
         }
@@ -30,7 +27,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Brand>> GetBrand(int id)
         {
-            return await _unitOfWork.Repository<Brand>().GetById(id);
+            return await _brandService.GetBrandById(id);
         }
     }
 }

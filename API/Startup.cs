@@ -2,7 +2,10 @@ using System.Linq;
 using API.Errors;
 using API.Helpers;
 using API.Middleware;
-using Core.Interfaces;
+using Core.Business;
+using Core.DAL;
+using Infrastructure.Business;
+using Infrastructure.DAL;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,6 +47,10 @@ namespace API
             services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddDbContext<BaseContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IBrandService, BrandService>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
 

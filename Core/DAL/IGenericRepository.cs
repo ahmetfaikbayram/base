@@ -1,12 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Entities;
 using Core.Specifications;
 
-namespace Core.Interfaces
+namespace Core.DAL
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {

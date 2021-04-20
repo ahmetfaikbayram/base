@@ -2,9 +2,10 @@ using System;
 using System.Collections;
 using System.Threading.Tasks;
 using Core.Entities;
-using Core.Interfaces;
+using Core.DAL;
+using Infrastructure.Data;
 
-namespace Infrastructure.Data
+namespace Infrastructure.DAL
 {
     public class UnitOfWork : IUnitOfWork
     {

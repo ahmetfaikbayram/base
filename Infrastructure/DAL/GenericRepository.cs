@@ -1,14 +1,13 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Entities;
-using Core.Interfaces;
+using Core.DAL;
 using Core.Specifications;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Data;
 
-namespace Infrastructure.Data
+namespace Infrastructure.DAL
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {

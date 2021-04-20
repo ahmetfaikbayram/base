@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Core.Entities;
 
-namespace Core.Interfaces
+namespace Core.DAL
 {
     public interface IUnitOfWork : IDisposable
     {
