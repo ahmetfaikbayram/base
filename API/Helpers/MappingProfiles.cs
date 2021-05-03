@@ -10,6 +10,8 @@ namespace API.Helpers
         {
             CreateMap<Product, ProductDto>()
                 .ForMember(d => d.Brand, o => o.MapFrom(s => s.Brand.Name));
+
+            CreateMap<Brand, BrandDto>();
         }
     }
 }

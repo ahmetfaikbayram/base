@@ -4,6 +4,11 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PagingHeaderComponent } from './components/paging-header/paging-header.component';
 import { PagerComponent } from './components/pager/pager.component';
 
+import { MatInputModule } from "@angular/material/input";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatSortModule } from "@angular/material/sort";
+
 @NgModule({
   declarations: [
     PagingHeaderComponent,
@@ -11,12 +16,20 @@ import { PagerComponent } from './components/pager/pager.component';
   ],
   imports: [
     CommonModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   exports: [
     PaginationModule,
     PagingHeaderComponent,
-    PagerComponent
+    PagerComponent,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ]
 })
 export class SharedModule { }

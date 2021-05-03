@@ -25,7 +25,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
-    this.getBrands();
+    this.getAllBrands();
   }
 
   getProducts() {
@@ -40,8 +40,8 @@ export class ProductComponent implements OnInit {
       });
   }
 
-  getBrands() {
-    this.productService.getBrands().subscribe(response => {
+  getAllBrands() {
+    this.productService.getAllBrands().subscribe(response => {
       this.brands = [{ id: 0, name: 'All' }, ...response];
     }, error => {
       console.log(error);

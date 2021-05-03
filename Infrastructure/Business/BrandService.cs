@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Core.Business;
 using Core.Entities;
 using Core.DAL;
+using Core.Specifications;
 
 namespace Infrastructure.Business
 {
@@ -27,5 +28,24 @@ namespace Infrastructure.Business
 
             return brand;
         }
+
+        public async Task<IReadOnlyList<Brand>> GetBrandList(BrandSpecParams brandParams)
+        {
+            var spec = new BrandsSpecification(brandParams);
+
+            var brands = await _unitOfWork.Repository<Brand>().GetListWithSpec(spec);
+
+            return brands;
+        }
+
+        public async Task<int> GetTotalItems(BrandSpecParams brandParams)
+        {
+            var countSpec = new BrandsForCountSpecification(brandParams);
+
+            var totalItems = await _unitOfWork.Repository<Brand>().Count(countSpec);
+
+            return totalItems;
+        }
+
     }
 }
